@@ -2,23 +2,6 @@ language: packer
 sudo: required
 dist: trusty
 before_install:
-  - sudo add-apt-repository -y ppa:ubuntu-lxc/stable
-  - sudo apt-get -q update
-  - sudo apt-get install -y lxd
-  - sudo usermod -a -G lxd $USER
+  - sudo ./env-setup.sh
 install:
-  - wget https://releases.hashicorp.com/packer/1.2.0/packer_1.2.0_linux_amd64.zip -O /tmp/packer.zip
-  - cd /tmp && unzip packer.zip
-  - sudo mv /tmp/packer /usr/local/bin/packer
-  - sudo chmod 755 /usr/local/bin/packer
-  - sudo chown root:root /usr/local/bin/packer
-  - sudo -E su $USER -c "set -ex ;\
-      packer version ;\
-      lxc --version ;\
-      lxd --version ;\
-      groups ;\
-      id ;\
-      id -gn ;\
-      lxd init --auto ;\
-      lxc storage list ;\
-      lxc network list"
+  - sudo -E su $USER -c "./pack-wrap.sh"
