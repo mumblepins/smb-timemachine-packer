@@ -1,0 +1,21 @@
+sudo: required
+dist: trusty
+addons:
+  apt:
+    source:
+      - 'ppa:ubuntu-lxc/stable'
+    packages:
+      - lxd
+before_install:
+  - sudo apt-get -q update
+  - sudo apt-get -y dist-upgrade
+install:
+  - wget https://releases.hashicorp.com/packer/1.2.0/packer_1.2.0_linux_amd64.zip -O /tmp/packer.zip
+  - cd /tmp && unzip packer.zip"
+  - sudo mv /tmp/packer /usr/local/bin/packer
+  - sudo chmod 755 /usr/local/bin/packer
+  - sudo chown root:root /usr/local/bin/packer
+  - ls -al /usr/local/bin
+  - packer version
+  - lxc --version
+  - lxd --version
