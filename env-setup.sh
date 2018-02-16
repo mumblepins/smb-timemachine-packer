@@ -1,5 +1,6 @@
 #!/bin/bash
 set -ex
+export PATH=/snap/bin:$PATH
 apt-get -q update
 groupadd --system lxd
 usermod -a -G lxd travis
@@ -12,3 +13,4 @@ mv /tmp/packer /usr/local/bin/packer
 chmod 755 /usr/local/bin/packer
 chown root:root /usr/local/bin/packer
 hash -r
+systemctl restart snap.lxd.daemon || true
