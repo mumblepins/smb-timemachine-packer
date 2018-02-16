@@ -1,0 +1,50 @@
+#!/bin/bash
+SAMBA_VERSION="4.8.0rc3"
+
+BUILD_DEPS='bison
+    debhelper
+    dh-python
+    docbook-xml
+    docbook-xsl
+    flex
+    libacl1-dev
+    libarchive-dev
+    libattr1-dev
+    libavahi-client-dev
+    libavahi-common-dev
+    libblkid-dev
+    libbsd-dev
+    libcap-dev
+    libcephfs-dev
+    libcmocka-dev
+    libcups2-dev
+    libdbus-1-dev
+    libgnutls28-dev
+    libgpgme11-dev
+    libjansson-dev
+    libldap2-dev
+    libldb-dev
+    libncurses5-dev
+    libpam0g-dev
+    libparse-yapp-perl
+    libpcap-dev
+    libpopt-dev
+    libreadline-dev
+    libsystemd-dev
+    libtalloc-dev
+    libtdb-dev
+    libtevent-dev
+    perl
+    pkg-config
+    po-debconf
+    python-all-dev
+    python-dnspython
+    python-ldb
+    python-ldb-dev
+    python-talloc-dev
+    python-tdb
+    python-testtools
+    python3
+    xfslibs-dev
+    xsltproc
+    zlib1g-dev'

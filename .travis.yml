@@ -5,3 +5,5 @@ before_install:
   - sudo ./env-setup.sh
 install:
   - sudo -E su $USER -c "./pack-wrap.sh"
+script:
+  - packer build packer.json

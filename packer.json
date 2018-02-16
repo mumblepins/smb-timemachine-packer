@@ -1,0 +1,39 @@
+{
+  "builders": [
+    {
+      "type": "lxd",
+      "name": "lxd-xenial",
+      "image": "ubuntu-daily:xenial",
+      "output_image": "ubuntu-xenial-timemachine",
+      "publish_properties": {
+        "description": "Trivial repackage with Packer"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "vars.sh",
+      "destination": "/tmp/vars.sh"
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "build-deps.sh",
+        "build.sh",
+        "cleanup.sh"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "smb.conf",
+      "destination": "/etc/samba/smb.conf"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "systemctl start nmb smb winbind"
+      ]
+    }
+  ]
+}
