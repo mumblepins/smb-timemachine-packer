@@ -6,7 +6,7 @@ addons:
       - 'ppa:ubuntu-lxc/stable'
 before_install:
   - sudo apt-get -q update
-  - sudo apt-get -y dist-upgrade
+  - sudo apt-get -y upgrade
   - sudo apt-get install -y lxd
 install:
   - wget https://releases.hashicorp.com/packer/1.2.0/packer_1.2.0_linux_amd64.zip -O /tmp/packer.zip
