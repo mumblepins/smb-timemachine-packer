@@ -51,7 +51,7 @@ make -j$(nproc)
 
 EOF
 
-
+cd /tmp/samba-${SAMBA_VERSION}
 make install
 systemctl enable smb nmb winbind
 
