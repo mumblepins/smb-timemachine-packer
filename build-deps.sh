@@ -1,6 +1,6 @@
 #!/bin/bash
 set -ex
-sleep 15
+sleep 60
 
 . /tmp/vars.sh
 
