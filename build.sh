@@ -12,7 +12,7 @@ cd /tmp
 wget https://download.samba.org/pub/samba/rc/samba-${SAMBA_VERSION}.tar.gz
 tar -xzvf samba-${SAMBA_VERSION}.tar.gz
 cd /tmp/samba-${SAMBA_VERSION}
-./configure --prefix=/usr
+./configure --prefix=/usr \
   --enable-fhs \
   --sysconfdir=/etc \
   --localstatedir=/var \
@@ -31,7 +31,6 @@ cd /tmp/samba-${SAMBA_VERSION}
   --with-dnsupdate \
   --with-gpgme \
   --with-systemd \
-  --with-fhs \
   --systemd-install-services \
   --with-systemddir=/lib/systemd/system \
   --datadir=/usr/share \
@@ -47,8 +46,8 @@ cd /tmp/samba-${SAMBA_VERSION}
   --libexecdir=/usr/lib/${DEB_HOST_MULTIARCH} \
   --builtin-libraries=ccan,samba-cluster-support \
   --libdir=/usr/lib/${DEB_HOST_MULTIARCH} \
-  --with-modulesdir=/usr/lib/${DEB_HOST_MULTIARCH}/samba"
-make -j$(nproc)"
+  --with-modulesdir=/usr/lib/${DEB_HOST_MULTIARCH}/samba
+make -j$(nproc)
 
 EOF
 
