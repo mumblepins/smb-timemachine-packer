@@ -17,3 +17,4 @@ deploy:
   bucket: the_thd_out_point
   on:
     repo: mumblepins/smb-timemachine-packer
+  skip_cleanup: true
