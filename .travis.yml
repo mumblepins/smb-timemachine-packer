@@ -2,10 +2,18 @@ language: packer
 sudo: required
 dist: trusty
 before_install:
-  - sudo ./env-setup.sh
+- sudo ./env-setup.sh
 install:
-  - sudo -E su $USER -c "./pack-wrap.sh"
+- sudo -E su $USER -c "./pack-wrap.sh"
 script:
-  - sudo -E su $USER -c "PATH=/snap/bin:$PATH  packer build packer.json"
-  - sudo -E su $USER -c "lxc image export ubuntu-xenial-timemachine"
-  - ls -althr
+- sudo -E su $USER -c "PATH=/snap/bin:$PATH packer build packer.json"
+- sudo -E su $USER -c "PATH=/snap/bin:$PATH lxc image export ubuntu-xenial-timemachine out.tar"
+- ls -althr
+deploy:
+  provider: gcs
+  access_key_id: GOOG5CUXQGDVJNAI7ZQB
+  secret_access_key:
+    secure: RoNhOGG30jQs0ilO1Vh37a0PxELxLViq2F//IeSPTy22HJc14ZKx80u9e11FlftVtqevhMqiyLs4yWIHPW08ZUx/hwHDHj1+E4EpM3mLLQiN2FiVoV467wm2MA/V3elIC9jJIYeeDsgM3e/esOEdx1wZzIIdc+zzZbzCG4HFV1yfffvWcF96ZsPP9wf9hKS/Q7CDLuoT+j+g+u7c+i2T53iLWxvPOGDQfcbj+hyz/51/hypmbHKVM0lZjAJkzqmuR9gUa7naOGl2YADkyQflFLixSxQVOOHKi8PZDfvwtqTimCZ0jVJu35sQU2cng/T2TC00DhJpn1C7f0LyjLvLyigCeleWbhsryzXJfj84RlBJOU6fUEURcpuMHj4HEeMyZm6itRaeWF9DzGPy2kpcjzSDJhQJ+gSlKKvWQOV+qI5JaUiU0vir/5Xky8fEUyGGVpupbiEPqUxEwVbGSZo74tUuRA7dTBIZ/SrhaVN0v9Zs92lWoW5dTXo0Zgv/60AzmZxSbPygZlHdZCdnzamnI67oSOoXX3Oz+xLhuGIrgjyxaTSwz+zAbO0wRseZjO/VUJaz25x7uhbt+Qfr2yUrLOglnobGVXD5MC1Y/tvv13kDoPJpXfSBCHKV8VByeLgVcZHy5YZaiRC8Ij1tguSpMFVU78PKUzP5DOhq0mEd3nU=
+  bucket: the_thd_out_point
+  on:
+    repo: mumblepins/smb-timemachine-packer
