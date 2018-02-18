@@ -32,8 +32,16 @@
     {
       "type": "shell",
       "inline": [
-        "systemctl status nmb smb winbind"
+        "bash -c \"systemctl status nmb smb winbind || true\"",
+        "bash -c \"systemctl restart nmb smb winbind || true\"",
+        "bash -c \"systemctl status nmb smb winbind || true\""
       ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "compress",
+      "keep_input_artifact": true
     }
   ]
 }
