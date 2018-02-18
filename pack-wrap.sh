@@ -15,3 +15,6 @@ lxc storage list
 lxc network create lxdbr0
 lxc network attach-profile lxdbr0 default eth0
 lxc network list
+lxc config set images.compression_algorithm xz
+lxc config show
+
